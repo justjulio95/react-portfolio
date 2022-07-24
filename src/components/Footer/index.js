@@ -1,6 +1,7 @@
 import React from "react";
 import github from "./github.svg";
 import linkedin from "./linkedin.svg"
+import stackoverflow from "./stackover.svg"
 
 function Footer() {
   return (
@@ -11,6 +12,9 @@ function Footer() {
       </a>
       <a href="https://www.linkedin.com/in/julio-suarez95/">
         <img className="mx-3" src={linkedin} alt="linkedin icon"></img>
+      </a>
+      <a href="https://stackoverflow.com/users/18031348/justjulio95">
+        <img className="mx-3" src={stackoverflow} alt="stackoverflow icon"></img>
       </a>
     </footer>
     </div>
