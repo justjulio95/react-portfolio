@@ -6,6 +6,9 @@ function App() {
   return (
     <div>
       <Header></Header>
+      <main>
+        
+      </main>
     </div>
   );
 }
