@@ -1,4 +1,6 @@
 import React from 'react';
+import Particles from "./components/Particles"
+import Navigation from './components/Nav';
 import Header from './components/Header';
 import ContactForm from './components/Contact';
 import About from './components/About';
@@ -8,19 +10,21 @@ import './App.css';
 
 function App() {
   
-  // const [contactSelected, setContactSelected] = useState(false)
+  // const [sectionSelected, setSontactSelected] = useState()
 
   return (
     <div>
-      <Header></Header>
+      <Navigation/>
+      <Header/>
+      <Particles id='tsparticles'/>
 
       <main>
-        <ContactForm></ContactForm>
-        <Projects></Projects>
-        <About></About>
+        {/* <ContactForm></ContactForm> */}
+        {/* <Projects></Projects> */}
+        <About/>
       </main>
 
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }
