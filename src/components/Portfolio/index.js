@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Image, Modal, Button } from 'react-bootstrap'
 import portfolioInfo from "../../utils/portfolioInfo";
+import resume from "../../Resume/resume.pdf"
+import github from "../../images/github.svg"
 
 function Portfolio() {
   const [modal, setModal] = useState(false);
@@ -22,17 +24,19 @@ function Portfolio() {
         </Modal.Header>
         <Modal.Body>
           <p>{project.summary}</p>
-          <Image src={project.image} style={{ width: "25%" }}/>
+          <Image src={project.image} className="d-block mx-auto my-auto" style={{ width: "75%" }}/>
         </Modal.Body>
         <Button
           href={project.link}
           target="_blank"
+          className="d-inline-block mx-auto my-auto mb-3"
         >
           Here's the Website
         </Button>
         <Button
           href={project.github}
           target="_blank"
+          className="d-inline-block mx-auto my-auto"
         >
           Here's the Repo
         </Button>
@@ -72,20 +76,22 @@ function Portfolio() {
   return (
     <div>
       <div>
-        <h1>My Portfolio</h1>
+        <h1 className="d-inline-block my-3 text-info">My Portfolio</h1>
       </div>
       <p>Take a look at my Github page:
         <Button
           href="/"
           target="_blank"
+          className="mx-3"
         >
-          image
+          <img src={github} style={{ width: "150%", position: "relative", right: "5px"}}/>
         </Button>
       </p>
       <p>Here's my Resume:
         <Button
-          href="/"
+          href={resume}
           target="_blank"
+          className="mx-3"
         >
           Download PDF
         </Button>
