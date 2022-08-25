@@ -4,6 +4,9 @@ import portfolioInfo from "../../utils/portfolioInfo";
 import resume from "../../Resume/resume.pdf"
 import github from "../../images/github.svg"
 
+// loading icon???? 
+// CSS CLASS Curpsur pointer
+
 function Portfolio() {
   const [modal, setModal] = useState(false);
   const [tempData, setTempData] = useState({});
@@ -84,7 +87,7 @@ function Portfolio() {
           target="_blank"
           className="mx-3"
         >
-          <img src={github} style={{ width: "150%", position: "relative", right: "5px"}}/>
+          <img src={github} style={{ width: "150%", position: "relative", right: "5px" }}/>
         </Button>
       </p>
       <p>Here's my Resume:
