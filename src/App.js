@@ -13,40 +13,15 @@ import { navLinks } from './utils/navlinks';
 function App() {
   
   const categories = navLinks.map((e) => ({ name: e.name }))
-  // const [currentCategory, setCurrentCategory] = useState('Home') // change this. Reference Module 21
 
-  // const renderCategory = () => {
-  //   if (currentCategory === 'Home') {
-  //     return <>
-  //       <Header/>
-  //       <Particles id='tsparticles'/>
-  //     </>
-  //   }
-  //   if (currentCategory === 'About') {
-  //     return <>
-  //       <About/>
-  //       <Particles id='tsparticles'/>
-  //     </>
-  //   }
-  //   if (currentCategory === 'Portfolio') {
-  //     return <>
-  //       <Projects/>
-  //       <Particles id='tsparticles'/>
-  //     </>
-  //   }
-  // }
-
-  // const handleCategoryChange = (category) => setCurrentCategory(category)
   const [currentPage, setCurrentPage] = useState("");
-  //handleCategoryChange={handleCategoryChange}
 
   // currentCategory={currentCategory
   return (
     <div className='App'>
-      {/* {renderCategory()} */}
       <BrowserRouter>
         <Navigation/>
-        <Particles id="ts-particles"/>
+        <Particles id="ts-particles" className="particles"/>
         <Routes>
           <Route exact path="/" element={<Header/>}/>
           <Route exact path="/home" element={<Header/>}/>
