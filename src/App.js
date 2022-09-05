@@ -16,17 +16,20 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState("");
 
+  const [handle, setHandle] = useState(true)
+
   // currentCategory={currentCategory
   return (
     <div className='App'>
       <BrowserRouter>
         <Navigation/>
-        <Particles id="ts-particles" className="particles"/>
+        <Particles id="ts-particles"/>
         <Routes>
           <Route exact path="/" element={<Header/>}/>
           <Route exact path="/home" element={<Header/>}/>
           <Route exact path="/about" element={<About/>}/>
           <Route exact path="/portfolio" element={<Projects/>}/>
+          <Route exact path="/contact" element={<ContactForm/>}/>
           <Route path="/*" element={<Header/>}/>
         </Routes>
       </BrowserRouter>

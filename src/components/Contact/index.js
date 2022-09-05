@@ -1,68 +1,37 @@
-import React, { useState } from "react";
-import { validateEmail } from "../../utils/helpers"
+import React from "react";
+import { Button } from 'react-bootstrap'
+import { useForm, ValidationError } from "@formspree/react";
+import './index.css'
 
 function ContactForm() {
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-  const { name, email, message } = formState;
-  const [errorMessage, setErrorMessage] = useState('')
-
-  function handleChange(e) {
-    if (e.target.name === 'email') {
-      const isValid = validateEmail(e.target.value);
-      
-      if(!isValid || !e.target.value.length) {
-        setErrorMessage('Please type a valid email');
-      } else {
-        setErrorMessage('');
-      }
-    } else {
-      if (!e.target.value.length) {
-        setErrorMessage(`${e.target.name} is required.`)
-      } else {
-        setErrorMessage('')
-      }
-    }
-
-    if (!errorMessage) {
-      setFormState({...formState, [e.target.name]: e.target.value })
-    }
+  const [state, handleSubmit] = useForm('mvoyzkva');
+  if (state.succeeded) {
+    return <h3>Thanks for the email. I'll be sure to get to you as soon as I see it!</h3>
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
-  return(
-    <section className="mx-5">
-      <h1>Contact Me</h1>
-      <form className="mx-5" id="contact-form" onSubmit={handleSubmit}>
-        <div className="form-group-row">
-          <label htmlFor="name" className="col-sm-2 col-form-label">Name: </label>
-          <div className="col-sm-10">
-            <input className="form-control" type="text" name="name" defaultValue={name} onBlur={handleChange}/>
-          </div>
+  return (
+    <form onSubmit={handleSubmit}>
+      <fieldset>
+        <legend>Send Me A Message</legend>
+        <div className="form-group my-form">
+          <label htmlFor="name" className="form-label mt-4 label">Name: </label>
+          <input type="text" className="form-control user-input" id="name" aria-describedby="nameHelp" placeholder="Your Name"/>
         </div>
-        <div className="form-group-row">
-          <label htmlFor="email" className="col-sm-2 col-form-label">Email: </label>
-          <div className="col-sm-10">
-            <input className="form-control" type="text" name="email" defaultValue={email} onBlur={handleChange}/>
-          </div>
+        <div className="form-group my-form">
+          <label htmlFor="email" className="form-label mt-4 label">Email: </label>
+          <input type="email" className="form-control user-input" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email"/>
+          <small id="emailHelp" className="form-text text-muted">Don't worry. Your email is safe with me.</small>
+          <ValidationError prefix="Email" field="email" errors={state.errors}/>
         </div>
-        <div className="form-group-row">
-          <label htmlFor="message" className="col-sm-2 col-form-label">Message: </label>
-          <div className="col-sm-10">
-            <textarea className="form-control" name="message" rows="5" defaultValue={message} onBlur={handleChange}></textarea>
-          </div>
+        <div class="form-group my-form">
+          <label htmlFor="message" class="form-label mt-4 label">Message: </label>
+          <textarea class="form-control user-input mb-4" id="message" rows="3"></textarea>
+          <ValidationError prefix="Message" field="message" errors={state.errors}/>
         </div>
-        {errorMessage && (
-          <div>
-            <p className="text-danger">{errorMessage}</p>
-          </div>
-        )}
-        <button type="submit" className="btn btn-secondary my-4">Submit</button>
-      </form>
-    </section>
+      </fieldset>
+      <Button type="submit" disabled={state.submitting}>Submit</Button>
+    </form>
   )
 }
 
-export default ContactForm
+export default ContactForm;
