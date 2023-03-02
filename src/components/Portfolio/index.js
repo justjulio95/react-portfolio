@@ -55,7 +55,7 @@ function Portfolio() {
 
   const mapped = portfolioInfo.map((e, index) => {
     return (
-      <Card key={index} className="mb-3 mx-3" style={{ width: "50%" }}>
+      <Card key={index} className="mb-3 mx-3" style={{ width: "50%", cursor: "pointer" }}>
         <Image
           onClick={() => {
             setTempData({
@@ -99,6 +99,15 @@ function Portfolio() {
           Download PDF
         </Button>
       </p>
+
+      <div>
+        <h3 className="d-inline-block my-3 mx-5 mb-5 text-info">
+          Just as a heads up, these projects that I'm so proud of are currently under 
+          construction. I'm in the process of moving them from Heroku to Amazon Web Service. 
+          If you'd like to take a look at this for yourself, feel free to contact me and I'll 
+          be more than happy to show you how to run the program step by step on your own computer.
+        </h3>
+      </div>
 
       <Container fluid="lg">
         <Row className="justify-content-center">
